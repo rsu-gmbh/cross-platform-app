@@ -51,17 +51,22 @@ export class CryptaService {
         error => {
           // load crypta from app store
           console.log("ERROR ", error);
-          const cryptaString = this.appStore.get(this.appStoreKey);
-          if (cryptaString) {
-            this._crypta = JSON.parse(cryptaString);
-          }
-          this.containerSource.next(this.getContainers());
+          this.loadLocal();
         }
       );
     } catch (err) {
       console.log("API NOT WORKING");
       console.log(err);
+      this.loadLocal();
     }
+  }
+
+  loadLocal() {
+    const cryptaString = this.appStore.get(this.appStoreKey);
+    if (cryptaString) {
+      this._crypta = JSON.parse(cryptaString);
+    }
+    this.containerSource.next(this.getContainers());
   }
 
   addCryptaContainer(
@@ -264,13 +269,17 @@ export class CryptaService {
   }
 
   save() {
-    const crypta = this.getLockedCrypta();
-    this.appStore.set(this.appStoreKey, JSON.stringify(crypta));
-    this.persistanceService.save(crypta).subscribe(
-      result => console.log("saved", result),
-      error => {
-        // could not save over network
-      }
-    );
+    try {
+      const crypta = this.getLockedCrypta();
+      this.appStore.set(this.appStoreKey, JSON.stringify(crypta));
+      this.persistanceService.save(crypta).subscribe(
+        result => console.log("saved", result),
+        error => {
+          // could not save over network
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
