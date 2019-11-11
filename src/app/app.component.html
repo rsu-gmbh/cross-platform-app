@@ -1,0 +1,31 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-toolbar>
+      <i class="material-icons">
+        account_circle
+      </i>
+      <span (click)="sidenav.toggle()">Admin</span>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'/'" (click)="sidenav.toggle()">Main</a>
+      <a mat-list-item [routerLink]="'/info'" (click)="sidenav.toggle()"
+        >Info</a
+      >
+      <a mat-list-item [routerLink]="'/settings'" (click)="sidenav.toggle()"
+        >Settings</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <i class="material-icons" (click)="sidenav.toggle()">
+        menu
+      </i>
+      <span>Crypta</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <div class="bottom-nav right">
+      <ng-container *ngTemplateOutlet="bottomBarContent"></ng-container>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

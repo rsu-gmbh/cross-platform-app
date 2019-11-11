@@ -1,0 +1,21 @@
+<div class="app-form">
+
+  <h2>New Container</h2>
+  <form [formGroup]="containerForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="password" required minlength="6">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password" formControlName="repeatPassword" required minlength="6">
+    </mat-form-field>
+  </form>
+</div>
+<ng-template #bottomBarContent>
+  <button mat-raised-button color="primary" (click)="saveContainer()">Save</button>
+</ng-template>

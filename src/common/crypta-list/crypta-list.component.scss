@@ -1,0 +1,22 @@
+.secret {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.searchbar {
+  display: flex;
+  align-items: baseline;
+
+  .back {
+    margin: 20px;
+  }
+
+  mat-form-field {
+    flex: 1;
+    margin-right: 20px;
+  }
+}

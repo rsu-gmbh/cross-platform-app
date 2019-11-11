@@ -1,0 +1,44 @@
+<div class="searchbar">
+  <i class="material-icons back" (click)="navigateBack()">
+    keyboard_arrow_left
+  </i>
+  <mat-form-field appearance="legacy">
+    <input matInput />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</div>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let item of items">
+    <mat-expansion-panel-header>
+      <span class="title">{{ item.title }}</span>
+    </mat-expansion-panel-header>
+    <div class="content">
+      <div class="secret">
+        <span>{{ item.secret }}</span>
+      </div>
+      <div class="buttons">
+        <button
+          *ngIf="item.locked"
+          mat-raised-button
+          color="primary"
+          (click)="unlockItem(item)"
+        >
+          Show
+        </button>
+        <button
+          *ngIf="!item.locked"
+          mat-raised-button
+          color="primary"
+          (click)="lockItem(item)"
+        >
+          Hide
+        </button>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<ng-template #bottomBarContent>
+  <button mat-raised-button color="primary" (click)="addItem()">
+    Add Item
+  </button>
+</ng-template>

@@ -1,0 +1,27 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+mat-expansion-panel {
+  .title {
+    margin-right: 10px;
+  }
+
+  .description {
+    color: grey;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    mat-form-field {
+      flex: 1;
+      margin-right: 10px;
+    }
+
+    button {
+    }
+  }
+}

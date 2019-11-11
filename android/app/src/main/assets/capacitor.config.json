@@ -1,0 +1,9 @@
+{
+  "appId": "de.rsu.crypta",
+  "appName": "RSU Crypta",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/crossplatform-app",
+  "linuxAndroidStudioPath": "/opt/michi/android-studio/bin/studio.sh",
+  "cordova": {}
+}

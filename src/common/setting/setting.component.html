@@ -1,0 +1,16 @@
+<div class="app-form">
+  <h2>Settings</h2>
+  <form [formGroup]="settingForm">
+    <mat-form-field>
+      <input matInput placeholder="http://" formControlName="url" required />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="a123" formControlName="key" required />
+    </mat-form-field>
+  </form>
+</div>
+<ng-template #bottomBarContent>
+  <button mat-raised-button color="primary" (click)="saveSetting()">
+    Save
+  </button>
+</ng-template>

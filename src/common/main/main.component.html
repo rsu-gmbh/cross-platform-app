@@ -1,0 +1,22 @@
+<mat-accordion>
+
+  <mat-expansion-panel *ngFor="let container of containers">
+    <mat-expansion-panel-header>
+      <span class="title">{{container.title}}</span>
+      <span class="description">{{container.description}}</span>
+    </mat-expansion-panel-header>
+    <div class="content">
+      <mat-form-field>
+        <input matInput #containerPassword placeholder="Password">
+      </mat-form-field>
+      <button mat-raised-button color="primary"
+        (click)="unlockContainer(container, containerPassword.value)">Unlock</button>
+    </div>
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+<ng-template #bottomBarContent>
+  <button mat-raised-button color="primary" (click)="navigateToAddContainer()">Add Container</button>
+</ng-template>

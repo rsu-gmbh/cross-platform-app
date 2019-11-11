@@ -1,0 +1,18 @@
+<div class="app-form">
+<h2>New Item</h2>
+<form [formGroup]="itemForm">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Description" formControlName="description">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Secret" formControlName="secret" required minlength="6">
+  </mat-form-field>
+</form>
+</div>
+<ng-template #bottomBarContent>
+  <button mat-raised-button color="primary" (click)="saveItem()">Save</button>
+</ng-template>
+
