@@ -1,6 +1,6 @@
 # Crypta a Crossplatform Password Manager
 
-This is a example app for a cross platform app.
+This is a example for a cross platform app.
 We are using [Angular](https://angular.io/) to create a progressive web app.
 [Electron](https://electronjs.org/) to create the native desktop app.
 [Capacitor](https://capacitor.ionicframework.com/) to create the hybrid mobile version.
@@ -47,17 +47,17 @@ First we have to create certificates for your localhost.
 
 #### Create CA Root Certificate
 
-openssl req -batch -new -newkey rsa:2048 -nodes \
- -keyout ca-key.pem -x509 -out ca.pem -days 3650 -subj "/CN=A localhost CA"
+    openssl req -batch -new -newkey rsa:2048 -nodes \
+    -keyout ca-key.pem -x509 -out ca.pem -days 3650 -subj "/CN=A localhost CA"
 
 #### Create a CSR for localhost, then sign it by CA
 
-openssl req -batch -new -newkey rsa:2048 -nodes \
- -keyout crypta.rsu-reifen.key.pem -subj /CN=crypta.rsu-reifen.de | \
- openssl x509 -req -CAkey ca-key.pem -CA ca.pem -CAcreateserial -out crypta.rsu-reifen.pem \
- -days 365 -extfile <(echo subjectAltName=DNS:crypta.rsu-reifen.de,IP:192.168.0.45)
+    openssl req -batch -new -newkey rsa:2048 -nodes \
+    -keyout crypta.rsu-reifen.key.pem -subj /CN=crypta.rsu-reifen.de | \
+    openssl x509 -req -CAkey ca-key.pem -CA ca.pem -CAcreateserial -out crypta.rsu-reifen.pem \
+    -days 365 -extfile <(echo subjectAltName=DNS:crypta.rsu-reifen.de,IP:192.168.0.45)
 
-#### Add the CA cert to the google-chrome CA certs
+#### Add the CA cert to your browser (here Google Chrome)
 
 Settings -> Advanced -> Privacy and security -> Manage certificates -> Authorities -> Import
 
@@ -67,9 +67,9 @@ Now choose your `ca.pem` you created above.
 
     ./node_modules/http-server/bin/http-server -p 8080 --ssl -C server/crypta.rsu-reifen.pem -K server/crypta.rsu-reifen.key.pem  ./dist/crossplatform-app/
 
-## Electron
+Check the paths to your key and cert.
 
-- Install rpm-build to build rpm packages.
+## Electron
 
 Build your app:
 
